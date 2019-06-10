@@ -17,6 +17,12 @@ def sigmoid(x):
     """
 
     ### YOUR CODE HERE
+    if isinstance(x,int)==True or isinstance(x,float)==True:
+        s=1/(1+np.exp(-x))
+    else:
+        s=[]
+        for x_tmp in x:
+            s.append(1/(1+np.exp(-x_tmp)))
 
     ### END YOUR CODE
 
@@ -56,7 +62,18 @@ def naiveSoftmaxLossAndGradient(
 
     ### Please use the provided softmax function (imported earlier in this file)
     ### This numerically stable implementation helps you avoid issues pertaining
-    ### to integer overflow. 
+    ### to integer overflow.
+    V_size=outsideVectors.shape()[0]
+    y=np.eye(V_size)[outsideWordIdx-1]
+
+    # onehot_u_all=np.eye(V_size)
+    y_jian=softmax(np.matmul(outsideVectors.T,centerWordVec))
+    U_o=np.matmul(y,outsideVectors)
+    loss=-np.log(softmax(np.matmul(U_o.T,centerWordVec)))
+
+    loss=-np.matmul(y,np.log(y_jian))
+    gradCenterVec=np.matmul(outsideVectors.T,(y_jian-y))
+    gradOutsideVecs=np.matmul(centerWordVec,(y_jian-y).T)
 
 
     ### END YOUR CODE
@@ -105,6 +122,18 @@ def negSamplingLossAndGradient(
     ### YOUR CODE HERE
 
     ### Please use your implementation of sigmoid in here.
+    V_size = outsideVectors.shape()[0]
+    y = np.eye(V_size)[outsideWordIdx - 1]
+
+    # onehot_u_all=np.eye(V_size)
+    y_jian = sigmoid(np.matmul(outsideVectors.T, centerWordVec))
+    negSampleonehot=np.eye(V_size)[negSampleWordIndices-1]
+    neg_x=np.matmul(negSampleonehot,outsideVectors)
+    loss=-np.matmul(y,np.log(y_jian))-np.sum(np.reshape(np.log(sigmoid(-neg_x)),(np.log(sigmoid(-neg_x)).size,)))
+    U_o=np.matmul(y,outsideVectors)
+
+    gradCenterVec=-(1-sigmoid(np.matmul(U_o.T,centerWordVec)))*U_o+np.sum((1-sigmoid(-neg_x))*negSampleonehot,axis=1)
+
 
 
     ### END YOUR CODE
