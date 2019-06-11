@@ -23,6 +23,7 @@ def sigmoid(x):
         s=[]
         for x_tmp in x:
             s.append(1/(1+np.exp(-x_tmp)))
+        s=np.array(s)
 
     ### END YOUR CODE
 
@@ -63,17 +64,17 @@ def naiveSoftmaxLossAndGradient(
     ### Please use the provided softmax function (imported earlier in this file)
     ### This numerically stable implementation helps you avoid issues pertaining
     ### to integer overflow.
-    V_size=outsideVectors.shape()[0]
-    y=np.eye(V_size)[outsideWordIdx-1]
+    V_size=outsideVectors.shape[0]
+    y=np.eye(V_size)[outsideWordIdx]
 
     # onehot_u_all=np.eye(V_size)
-    y_jian=softmax(np.matmul(outsideVectors.T,centerWordVec))
+    y_jian=softmax(np.matmul(outsideVectors,centerWordVec.T))
     U_o=np.matmul(y,outsideVectors)
-    loss=-np.log(softmax(np.matmul(U_o.T,centerWordVec)))
+    # loss=-np.log(softmax(np.matmul(U_o,centerWordVec.T)))
 
     loss=-np.matmul(y,np.log(y_jian))
-    gradCenterVec=np.matmul(outsideVectors.T,(y_jian-y))
-    gradOutsideVecs=np.matmul(centerWordVec,(y_jian-y).T)
+    gradCenterVec=np.matmul((y_jian-y),outsideVectors)
+    gradOutsideVecs=np.matmul((y_jian-y)[:,np.newaxis],centerWordVec[np.newaxis])
 
 
     ### END YOUR CODE
@@ -122,19 +123,25 @@ def negSamplingLossAndGradient(
     ### YOUR CODE HERE
 
     ### Please use your implementation of sigmoid in here.
-    V_size = outsideVectors.shape()[0]
-    y = np.eye(V_size)[outsideWordIdx - 1]
+    indicator=[1]+[-1 for i in range(len(negSampleWordIndices))]
+    indicator=np.array(indicator)
+    V_size = outsideVectors.shape[0]
+    y = np.eye(V_size)[outsideWordIdx]
 
+    Uo_Uk=np.matmul(np.eye(V_size)[indices],outsideVectors)
+    gradOutsideVecs_raw=np.matmul(((sigmoid(np.matmul(Uo_Uk,centerWordVec.T)*indicator)-1)*indicator)[:,np.newaxis],centerWordVec[np.newaxis])
+    gradOutsideVecs=np.zeros(outsideVectors.shape)
+    for i in range(len(indices)):
+        gradOutsideVecs[indices[i]]+=gradOutsideVecs_raw[i]
     # onehot_u_all=np.eye(V_size)
-    y_jian = sigmoid(np.matmul(outsideVectors.T, centerWordVec))
-    negSampleonehot=np.eye(V_size)[negSampleWordIndices-1]
-    neg_x=np.matmul(negSampleonehot,outsideVectors)
-    loss=-np.matmul(y,np.log(y_jian))-np.sum(np.reshape(np.log(sigmoid(-neg_x)),(np.log(sigmoid(-neg_x)).size,)))
-    U_o=np.matmul(y,outsideVectors)
+    y_jian = sigmoid(np.matmul(outsideVectors, centerWordVec.T))
+    negSampleonehot=np.eye(V_size)[negSampleWordIndices]
+    neg_x_Uk=np.matmul(negSampleonehot,outsideVectors)
+    Uk_Vc=np.matmul(neg_x_Uk,centerWordVec.T)
+    loss=-np.matmul(y,np.log(y_jian))-np.sum(np.log(sigmoid(-Uk_Vc)))
 
-    gradCenterVec=-(1-sigmoid(np.matmul(U_o.T,centerWordVec)))*U_o+np.sum((1-sigmoid(-neg_x))*negSampleonehot,axis=1)
-
-
+    gradCenterVec=np.matmul((sigmoid(np.matmul(Uo_Uk, centerWordVec.T) * indicator) - 1) * indicator,
+              Uo_Uk)
 
     ### END YOUR CODE
 
@@ -177,6 +184,18 @@ def skipgram(currentCenterWord, windowSize, outsideWords, word2Ind,
     gradOutsideVectors = np.zeros(outsideVectors.shape)
 
     ### YOUR CODE HERE
+    V_size=centerWordVectors.shape[0]
+    centerwordIndex=word2Ind[currentCenterWord]
+
+    center_onehot=np.eye(V_size)[centerwordIndex]
+    Vc=np.matmul(center_onehot,centerWordVectors)
+    outsideWordIdxes=[word2Ind[outsideword_tmp] for outsideword_tmp in outsideWords]
+    loss=0
+    for outsideWordIdx in outsideWordIdxes:
+        loss_tmp,gradCenterVecs_tmp,gradOutsideVectors_tmp=word2vecLossAndGradient(Vc,outsideWordIdx,outsideVectors,dataset)
+        loss+=loss_tmp
+        gradCenterVecs[centerwordIndex]+=gradCenterVecs_tmp
+        gradOutsideVectors+=gradOutsideVectors_tmp
 
     ### END YOUR CODE
 
@@ -229,8 +248,13 @@ def test_word2vec():
     dummy_tokens = dict([("a",0), ("b",1), ("c",2),("d",3),("e",4)])
 
     print("==== Gradient check for skip-gram with naiveSoftmaxLossAndGradient ====")
+    # gradcheck_naive(lambda vec: word2vec_sgd_wrapper(
+    #     skipgram, dummy_tokens, vec, dataset, 5, naiveSoftmaxLossAndGradient),
+    #     dummy_vectors, "naiveSoftmaxLossAndGradient Gradient")
+
+    test_naivesoftmax=naiveSoftmaxLossAndGradient
     gradcheck_naive(lambda vec: word2vec_sgd_wrapper(
-        skipgram, dummy_tokens, vec, dataset, 5, naiveSoftmaxLossAndGradient),
+        skipgram, dummy_tokens, vec, dataset, 5, test_naivesoftmax),
         dummy_vectors, "naiveSoftmaxLossAndGradient Gradient")
 
     print("==== Gradient check for skip-gram with negSamplingLossAndGradient ====")
