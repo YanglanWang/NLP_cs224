@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="496db9f2-79a7-471f-a12e-bdd66a30f32a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,7 +15,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils/parser_utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="6180">
               <caret line="421" selection-start-line="421" selection-end-line="421" />
               <folding>
                 <element signature="e#183#194#0" expanded="true" />
@@ -27,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/parser_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="115" selection-start-line="115" selection-end-line="115" />
+            <state relative-caret-position="270">
+              <caret line="129" selection-start-line="129" selection-end-line="129" />
               <folding>
                 <element signature="e#187#200#0" expanded="true" />
               </folding>
@@ -39,7 +39,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
+            <state relative-caret-position="1710">
               <caret line="125" selection-start-line="125" selection-end-line="125" />
               <folding>
                 <element signature="e#154#183#0" expanded="true" />
@@ -73,40 +73,22 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="111" />
-    <option name="y" value="222" />
-    <option name="width" value="1299" />
-    <option name="height" value="456" />
+    <option name="x" value="69" />
+    <option name="y" value="34" />
+    <option name="width" value="1297" />
+    <option name="height" value="314" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="a3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="a3" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="a3" type="b2602c69:ProjectViewProjectNode" />
-              <item name="a3" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../a4_zip/a4" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -235,24 +217,26 @@
       <option name="presentableId" value="Default" />
       <updated>1560779411459</updated>
       <workItem from="1560779413638" duration="88000" />
-      <workItem from="1560779555899" duration="12086000" />
+      <workItem from="1560779555899" duration="12803000" />
+      <workItem from="1561101719354" duration="805000" />
+      <workItem from="1561106710614" duration="46000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12174000" />
+    <option name="totallyTimeSpent" value="13742000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
+    <frame x="64" y="-4" width="1303" height="773" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25338647" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.25379092" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Alibaba Cloud Explorer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.51718986" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.044843048" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4289985" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -369,7 +353,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/utils/parser_utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="6180">
           <caret line="421" selection-start-line="421" selection-end-line="421" />
           <folding>
             <element signature="e#183#194#0" expanded="true" />
@@ -379,7 +363,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/run.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
+        <state relative-caret-position="1710">
           <caret line="125" selection-start-line="125" selection-end-line="125" />
           <folding>
             <element signature="e#154#183#0" expanded="true" />
@@ -389,8 +373,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/parser_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="115" selection-start-line="115" selection-end-line="115" />
+        <state relative-caret-position="270">
+          <caret line="129" selection-start-line="129" selection-end-line="129" />
           <folding>
             <element signature="e#187#200#0" expanded="true" />
           </folding>
