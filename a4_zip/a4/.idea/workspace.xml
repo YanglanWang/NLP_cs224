@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="088e0d27-5991-436d-b959-c4915f89478f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/nmt_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/nmt_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sanity_check.py" beforeDir="false" afterPath="$PROJECT_DIR$/sanity_check.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,8 +38,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sanity_check.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="196" selection-start-line="196" selection-end-line="196" />
+            <state relative-caret-position="29">
+              <caret line="223" selection-start-line="223" selection-end-line="223" />
             </state>
           </provider>
         </entry>
@@ -64,11 +65,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nmt_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-210">
-              <caret line="261" selection-start-line="261" selection-end-line="261" />
+            <state relative-caret-position="107">
+              <caret line="355" column="53" selection-start-line="355" selection-start-column="53" selection-end-line="355" selection-end-column="53" />
               <folding>
                 <element signature="e#176#210#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/run.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="183">
+              <caret line="324" column="36" selection-start-line="324" selection-start-column="36" selection-end-line="324" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -83,6 +93,7 @@
       <find>concatenat</find>
       <find>enc_hiddens_target</find>
       <find>torch.cat</find>
+      <find>torch.__</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -94,6 +105,7 @@
         <option value="$PROJECT_DIR$/model_embeddings.py" />
         <option value="$PROJECT_DIR$/utils.py" />
         <option value="$PROJECT_DIR$/sanity_check.py" />
+        <option value="$PROJECT_DIR$/run.py" />
         <option value="$PROJECT_DIR$/nmt_model.py" />
       </list>
     </option>
@@ -221,12 +233,12 @@
       <updated>1561106754272</updated>
       <workItem from="1561106764561" duration="2638000" />
       <workItem from="1561175108085" duration="3063000" />
-      <workItem from="1561188885569" duration="23483000" />
+      <workItem from="1561188885569" duration="32617000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29184000" />
+    <option name="totallyTimeSpent" value="38318000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
@@ -246,7 +258,7 @@
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.32884902" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.4529148" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.65769804" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.32884902" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -479,13 +491,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sanity_check.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="196" selection-start-line="196" selection-end-line="196" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/model_embeddings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -493,10 +498,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sanity_check.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="29">
+          <caret line="223" selection-start-line="223" selection-end-line="223" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="324" column="36" selection-start-line="324" selection-start-column="36" selection-end-line="324" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nmt_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-210">
-          <caret line="261" selection-start-line="261" selection-end-line="261" />
+        <state relative-caret-position="107">
+          <caret line="355" column="53" selection-start-line="355" selection-start-column="53" selection-end-line="355" selection-end-column="53" />
           <folding>
             <element signature="e#176#210#0" expanded="true" />
           </folding>

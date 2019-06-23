@@ -73,7 +73,7 @@ class NMT(nn.Module):
         ###     Dropout Layer:
         ###         https://pytorch.org/docs/stable/nn.html#torch.nn.Dropout
         self.encoder=nn.LSTM(embed_size,self.hidden_size,bias=True,bidirectional=True)
-        self.decoder=nn.LSTMCell(embed_size,self.hidden_size,bias=True)
+        self.decoder=nn.LSTMCell(embed_size+self.hidden_size,self.hidden_size,bias=True)
         self.h_projection=nn.Linear(self.hidden_size*2,self.hidden_size,bias=False)
         self.c_projection=nn.Linear(self.hidden_size*2,self.hidden_size,bias=False)
         self.att_projection=nn.Linear(self.hidden_size*2,self.hidden_size,bias=False)
@@ -316,7 +316,10 @@ class NMT(nn.Module):
         ###         https://pytorch.org/docs/stable/torch.html#torch.unsqueeze
         ###     Tensor Squeeze:
         ###         https://pytorch.org/docs/stable/torch.html#torch.squeeze
-
+        dec_state=self.decoder(Ybar_t,dec_state)
+        h_t_dec_unsqueeze=torch.unsqueeze(dec_state[0],2)   #(b,h,1)
+        e_t=torch.bmm(enc_hiddens_proj,h_t_dec_unsqueeze)
+        e_t=torch.squeeze(e_t,2)
 
         ### END YOUR CODE
 
@@ -351,7 +354,13 @@ class NMT(nn.Module):
         ###         https://pytorch.org/docs/stable/torch.html#torch.cat
         ###     Tanh:
         ###         https://pytorch.org/docs/stable/torch.html#torch.tanh
-
+        alpha_t=torch.nn.functional.softmax(e_t,dim=1)
+        alpha_t=torch.unsqueeze(alpha_t,1)
+        a_t=torch.bmm(alpha_t,enc_hiddens)
+        a_t=torch.squeeze(a_t,1)
+        U_t=torch.cat([dec_state[0],a_t],dim=1)
+        V_t=self.combined_output_projection(U_t)
+        O_t=self.dropout(torch.tanh(V_t))
 
         ### END YOUR CODE
 
