@@ -1,13 +1,13 @@
-name: local_nmt
-channels:
-  - pytorch
-  - defaults
+name: local_nmt4
+#channels:
+#  - pytorch
+#  - defaults
 dependencies:
   - python=3.5
   - numpy
   - scipy
   - tqdm
   - docopt
-  - pytorch
+  - pytorch=1.0.0
   - nltk
   - torchvision

@@ -177,10 +177,13 @@ def question_2d_sanity_check(decoder):
     print("Sanity Check Passed for Question 2d: CharDecoder.decode_greedy()!")
     print("-"*80)
 
+
+
+
 def main():
     """ Main func.
     """
-    args = docopt(__doc__)
+    # args = docopt(__doc__)
 
     # Check Python & PyTorch Versions
     assert (sys.version_info >= (3, 5)), "Please update your installation of Python to version >= 3.5"
@@ -209,25 +212,24 @@ def main():
         char_embedding_size=EMBED_SIZE,
         target_vocab=char_vocab)
 
+    question_1f_sanity_check()
 
-    # question_1e_sanity_check()
-
-    if args['1e']:
-        question_1e_sanity_check()
-    elif args['1f']:
-        question_1f_sanity_check()
-    elif args['1j']:
-        question_1j_sanity_check(model)
-    elif args['2a']:
-        question_2a_sanity_check(decoder, char_vocab)
-    elif args['2b']:
-        question_2b_sanity_check(decoder, char_vocab)
-    elif args['2c']:
-        question_2c_sanity_check(decoder)
-    elif args['2d']:
-        question_2d_sanity_check(decoder)
-    else:
-        raise RuntimeError('invalid run mode')
+    # if args['1e']:
+    #     question_1e_sanity_check()
+    # elif args['1f']:
+    #     question_1f_sanity_check()
+    # elif args['1j']:
+    #     question_1j_sanity_check(model)
+    # elif args['2a']:
+    #     question_2a_sanity_check(decoder, char_vocab)
+    # elif args['2b']:
+    #     question_2b_sanity_check(decoder, char_vocab)
+    # elif args['2c']:
+    #     question_2c_sanity_check(decoder)
+    # elif args['2d']:
+    #     question_2d_sanity_check(decoder)
+    # else:
+    #     raise RuntimeError('invalid run mode')
 
 
 if __name__ == '__main__':

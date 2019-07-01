@@ -48,6 +48,23 @@ class NMT(nn.Module):
         self.vocab = vocab
 
         ### COPY OVER YOUR CODE FROM ASSIGNMENT 4
+        self.encoder = None
+        self.decoder = None
+        self.h_projection = None
+        self.c_projection = None
+        self.att_projection = None
+        self.combined_output_projection = None
+        self.target_vocab_projection = None
+        self.dropout = None
+
+        self.encoder = nn.LSTM(embed_size, self.hidden_size, bias=True, bidirectional=True)
+        self.decoder = nn.LSTMCell(embed_size + self.hidden_size, self.hidden_size, bias=True)
+        self.h_projection = nn.Linear(self.hidden_size * 2, self.hidden_size, bias=False)
+        self.c_projection = nn.Linear(self.hidden_size * 2, self.hidden_size, bias=False)
+        self.att_projection = nn.Linear(self.hidden_size * 2, self.hidden_size, bias=False)
+        self.combined_output_projection = nn.Linear(self.hidden_size * 3, self.hidden_size, bias=False)
+        self.target_vocab_projection = nn.Linear(self.hidden_size, len(self.vocab.tgt), bias=False)
+        self.dropout = nn.Dropout(p=self.dropout_rate)
 
 
         ### END YOUR CODE FROM ASSIGNMENT 4
@@ -90,6 +107,15 @@ class NMT(nn.Module):
         ###     - Add `source_padded_chars` for character level padded encodings for source
         ###     - Add `target_padded_chars` for character level padded encodings for target
         ###     - Modify calls to encode() and decode() to use the character level encodings
+
+        source_padded_chars=self.vocab.src.to_input_tensor_char(source,device=self.device)   #(max_sentence_length, batch_size, max_word_length)
+        target_padded_chars=self.vocab.tgt.to_input_tensor_char(target,device=self.device)   #(max_sentence_length, batch_size, max_word_length)
+
+        target_padded = self.vocab.tgt.to_input_tensor(target, device=self.device)  # Tensor: (tgt_len, b)
+
+        enc_hiddens, dec_init_state = self.encode(source_padded_chars, source_lengths)
+        enc_masks = self.generate_sent_masks(enc_hiddens, source_lengths)
+        combined_outputs = self.decode(enc_hiddens, enc_masks, dec_init_state, target_padded_chars)
 
 
         ### END YOUR CODE
@@ -136,6 +162,15 @@ class NMT(nn.Module):
 
         ### COPY OVER YOUR CODE FROM ASSIGNMENT 4
         ### Except replace "self.model_embeddings.source" with "self.model_embeddings_source"
+        X = self.model_embeddings_source(source_padded)
+        X_pack = pack_padded_sequence(input=X, lengths=source_lengths)
+        enc_hiddens_tmp, (last_hidden, last_cell) = self.encoder(X_pack)
+        enc_hiddens, _ = pad_packed_sequence(enc_hiddens_tmp, total_length=X.shape[0], batch_first=True)
+        last_hidden_cat = torch.cat([last_hidden[0], last_hidden[1]], dim=1)
+        last_cell_cat = torch.cat([last_cell[0], last_cell[1]], dim=1)
+        init_decoder_hidden = self.h_projection(last_hidden_cat)
+        init_decoder_cell = self.c_projection(last_cell_cat)
+        dec_init_state = (init_decoder_hidden, init_decoder_cell)
 
 
         ### END YOUR CODE FROM ASSIGNMENT 4
@@ -171,6 +206,16 @@ class NMT(nn.Module):
 
         ### COPY OVER YOUR CODE FROM ASSIGNMENT 4
         ### Except replace "self.model_embeddings.target" with "self.model_embeddings_target"
+        enc_hiddens_proj = self.att_projection(enc_hiddens)
+        Y = self.model_embeddings_target(target_padded)
+        Y_t = torch.split(Y, 1, 0)
+        for Y_tmp in Y_t:
+            Y_tmp = torch.squeeze(Y_tmp, dim=0)
+            Ybar_t = torch.cat([Y_tmp, o_prev], dim=1)
+            dec_state, combined_output, e_t = self.step(Ybar_t, dec_state, enc_hiddens, enc_hiddens_proj, enc_masks)
+            combined_outputs.append(combined_output)
+            o_prev = combined_output
+        combined_outputs = torch.stack(combined_outputs, dim=0)
 
 
         ### END YOUR CODE FROM ASSIGNMENT 4
@@ -206,6 +251,10 @@ class NMT(nn.Module):
         combined_output = None
 
         ### COPY OVER YOUR CODE FROM ASSIGNMENT 4
+        dec_state = self.decoder(Ybar_t, dec_state)
+        h_t_dec_unsqueeze = torch.unsqueeze(dec_state[0], 2)  # (b,h,1)
+        e_t = torch.bmm(enc_hiddens_proj, h_t_dec_unsqueeze)
+        e_t = torch.squeeze(e_t, 2)
 
 
         ### END YOUR CODE FROM ASSIGNMENT 4
@@ -216,6 +265,13 @@ class NMT(nn.Module):
             e_t.data.masked_fill_(enc_masks.byte(), -float('inf'))
 
         ### COPY OVER YOUR CODE FROM ASSIGNMENT 4
+        alpha_t = torch.nn.functional.softmax(e_t, dim=1)
+        alpha_t = torch.unsqueeze(alpha_t, 1)
+        a_t = torch.bmm(alpha_t, enc_hiddens)
+        a_t = torch.squeeze(a_t, 1)
+        U_t = torch.cat([dec_state[0], a_t], dim=1)
+        V_t = self.combined_output_projection(U_t)
+        O_t = self.dropout(torch.tanh(V_t))
 
 
         ### END YOUR CODE FROM ASSIGNMENT 4

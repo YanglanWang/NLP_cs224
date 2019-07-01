@@ -62,6 +62,14 @@ def pad_sents(sents, pad_token):
     sents_padded = []
 
     ### COPY OVER YOUR CODE FROM ASSIGNMENT 4
+    len_max = 0
+    for sentence in sents:
+        if len_max < len(sentence):
+            len_max = len(sentence)
+    for sentence in sents:
+        sentence.extend([pad_token] * (len_max - len(sentence)))
+        # sents_padded.append(sentence)
+    sents_padded = sents
 
 
     ### END YOUR CODE FROM ASSIGNMENT 4

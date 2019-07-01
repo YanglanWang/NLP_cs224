@@ -220,17 +220,17 @@ def main():
         dropout_rate=DROPOUT_RATE,
         vocab=vocab)
 
-    # question_1e_sanity_check(model, src_sents, tgt_sents, vocab)
+    question_1d_sanity_check(model, src_sents, tgt_sents, vocab)
 
-    if args['1d']:
-        question_1d_sanity_check(model, src_sents, tgt_sents, vocab)
-    elif args['1e']:
-        question_1e_sanity_check(model, src_sents, tgt_sents, vocab)
-    elif args['1f']:
-       # generate_outputs(model, src_sents, tgt_sents, vocab)
-        question_1f_sanity_check(model, src_sents, tgt_sents, vocab)
-    else:
-        raise RuntimeError('invalid run mode')
+    # if args['1d']:
+    #     question_1d_sanity_check(model, src_sents, tgt_sents, vocab)
+    # elif args['1e']:
+    #     question_1e_sanity_check(model, src_sents, tgt_sents, vocab)
+    # elif args['1f']:
+    #    # generate_outputs(model, src_sents, tgt_sents, vocab)
+    #     question_1f_sanity_check(model, src_sents, tgt_sents, vocab)
+    # else:
+    #     raise RuntimeError('invalid run mode')
 
 
 if __name__ == '__main__':
