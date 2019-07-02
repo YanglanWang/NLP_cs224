@@ -2,19 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="088e0d27-5991-436d-b959-c4915f89478f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../a5_public/check1h.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../a5_public/check1i.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../a5_public/test_matrix_calculation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local_env.yml" beforeDir="false" afterPath="$PROJECT_DIR$/local_env.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sanity_check.py" beforeDir="false" afterPath="$PROJECT_DIR$/sanity_check.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../a5_public/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../a5_public/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../a5_public/cnn.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../a5_public/cnn.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../a5_public/highway.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../a5_public/highway.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../a5_public/model_embeddings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../a5_public/model_embeddings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../a5_public/char_decoder.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../a5_public/char_decoder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../a5_public/model.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../../a5_public/model.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../a5_public/model.bin.optim" beforeDir="false" afterPath="$PROJECT_DIR$/../../a5_public/model.bin.optim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../a5_public/nmt_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../a5_public/nmt_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../a5_public/sanity_check.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../a5_public/sanity_check.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../a5_public/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../a5_public/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../a5_public/vocab.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../a5_public/vocab.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +22,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-558">
-              <caret line="38" column="22" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="38" selection-end-column="22" />
+            <state relative-caret-position="480">
+              <caret line="38" column="22" selection-start-line="31" selection-start-column="4" selection-end-line="38" selection-end-column="22" />
               <folding>
                 <element signature="e#171#182#0" expanded="true" />
               </folding>
@@ -40,7 +34,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sanity_check.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="420">
               <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
             </state>
           </provider>
@@ -49,7 +43,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/model_embeddings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
+            <state relative-caret-position="480">
               <caret line="32" column="37" lean-forward="true" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="46" />
             </state>
           </provider>
@@ -58,7 +52,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/anaconda3/envs/local_nmt/lib/python3.5/site-packages/torch/nn/utils/rnn.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-10">
+            <state relative-caret-position="3705">
               <caret line="250" lean-forward="true" selection-start-line="250" selection-end-line="250" />
             </state>
           </provider>
@@ -67,7 +61,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/vocab.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
+            <state relative-caret-position="1665">
               <caret line="117" column="8" selection-start-line="117" selection-start-column="8" selection-end-line="117" selection-end-column="8" />
             </state>
           </provider>
@@ -76,7 +70,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="297">
+            <state relative-caret-position="2745">
               <caret line="199" column="80" selection-start-line="199" selection-start-column="80" selection-end-line="199" selection-end-column="80" />
             </state>
           </provider>
@@ -85,8 +79,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nmt_model.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="260" column="60" lean-forward="true" selection-start-line="251" selection-start-column="8" selection-end-line="260" selection-end-column="60" />
+            <state relative-caret-position="321">
+              <caret line="164" column="10" lean-forward="true" selection-start-line="164" selection-start-column="10" selection-end-line="164" selection-end-column="10" />
               <folding>
                 <element signature="e#176#210#0" expanded="true" />
               </folding>
@@ -118,6 +112,7 @@
       <find>soft</find>
       <find>squeeze</find>
       <find>self.dropout</find>
+      <find>lstm</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -128,17 +123,17 @@
       <list>
         <option value="$PROJECT_DIR$/model_embeddings.py" />
         <option value="$PROJECT_DIR$/utils.py" />
-        <option value="$PROJECT_DIR$/nmt_model.py" />
         <option value="$PROJECT_DIR$/run.py" />
         <option value="$PROJECT_DIR$/sanity_check.py" />
+        <option value="$PROJECT_DIR$/nmt_model.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="576" />
-    <option name="y" value="169" />
+    <option name="x" value="569" />
+    <option name="y" value="386" />
     <option name="width" value="1291" />
-    <option name="height" value="574" />
+    <option name="height" value="401" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -163,7 +158,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../a5_public" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -254,25 +249,26 @@
       <workItem from="1561300375278" duration="1524000" />
       <workItem from="1561335301317" duration="1051000" />
       <workItem from="1561358587814" duration="1470000" />
-      <workItem from="1561940489316" duration="9322000" />
+      <workItem from="1561940489316" duration="9896000" />
+      <workItem from="1562025299235" duration="3578000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53062000" />
+    <option name="totallyTimeSpent" value="57214000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="576" y="169" width="1291" height="574" extended-state="0" />
+    <frame x="569" y="386" width="1291" height="401" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.18406375" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.18554217" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Alibaba Cloud Explorer" order="2" weight="0.32988048" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.2825112" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.40764332" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.40764332" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -494,55 +490,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="297">
-          <caret line="199" column="80" selection-start-line="199" selection-start-column="80" selection-end-line="199" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sanity_check.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/model_embeddings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="32" column="37" lean-forward="true" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda3/envs/local_nmt/lib/python3.5/site-packages/torch/nn/utils/rnn.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
-          <caret line="250" lean-forward="true" selection-start-line="250" selection-end-line="250" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-558">
-          <caret line="38" column="22" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="38" selection-end-column="22" />
+        <state relative-caret-position="480">
+          <caret line="38" column="22" selection-start-line="31" selection-start-column="4" selection-end-line="38" selection-end-column="22" />
           <folding>
             <element signature="e#171#182#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/sanity_check.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/model_embeddings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" column="37" lean-forward="true" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/envs/local_nmt/lib/python3.5/site-packages/torch/nn/utils/rnn.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3705">
+          <caret line="250" lean-forward="true" selection-start-line="250" selection-end-line="250" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vocab.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
+        <state relative-caret-position="1665">
           <caret line="117" column="8" selection-start-line="117" selection-start-column="8" selection-end-line="117" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2745">
+          <caret line="199" column="80" selection-start-line="199" selection-start-column="80" selection-end-line="199" selection-end-column="80" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/nmt_model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="260" column="60" lean-forward="true" selection-start-line="251" selection-start-column="8" selection-end-line="260" selection-end-column="60" />
+        <state relative-caret-position="321">
+          <caret line="164" column="10" lean-forward="true" selection-start-line="164" selection-start-column="10" selection-end-line="164" selection-end-column="10" />
           <folding>
             <element signature="e#176#210#0" expanded="true" />
           </folding>

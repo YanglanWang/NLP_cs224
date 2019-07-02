@@ -41,7 +41,19 @@ def pad_sents_char(sents, char_pad_token):
     ###     You should NOT use the method `pad_sents()` below because of the way it handles
     ###     padding and unknown words.
     max_sentence_length=max([len(sentence) for sentence in sents])
-    sents_padded=[[word+[char_pad_token]*(max_word_length-len(word)) for word in sentence]+[[char_pad_token]*max_word_length]*(max_sentence_length-len(sentence)) for sentence in sents]
+    dummy_word=[char_pad_token]*max_word_length
+    sents_padded=[]
+    for sentence in sents:
+        sentence_tmp=[]
+        for word in sentence:
+            if len(word)>max_word_length:
+                word_tmp=word[:max_word_length]
+            else:
+                word_tmp=word+[char_pad_token]*(max_word_length-len(word))
+            sentence_tmp.append(word_tmp)
+        sentence_tmp.extend([dummy_word]*(max_sentence_length-len(sentence_tmp)))
+        sents_padded.append(sentence_tmp)
+    # sents_padded=[[word+[char_pad_token]*(max_word_length-len(word)) for word in sentence]+[[char_pad_token]*max_word_length]*(max_sentence_length-len(sentence)) for sentence in sents]
 
 
     ### END YOUR CODE

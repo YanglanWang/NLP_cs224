@@ -213,6 +213,7 @@ def main():
         target_vocab=char_vocab)
 
     question_1f_sanity_check()
+    # question_2c_sanity_check(decoder)
 
     # if args['1e']:
     #     question_1e_sanity_check()

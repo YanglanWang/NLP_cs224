@@ -127,7 +127,21 @@ class VocabEntry(object):
         ###
         ###     You must prepend each word with the `start_of_word` character and append 
         ###     with the `end_of_word` character.
-        return [[[self.start_of_word]+[self.char2id[character] for character in word]+[self.end_of_word] for word in sentence] for sentence in sents]
+        output=[]
+        for sentence in sents:
+            sentence_tmp=[]
+            for word in sentence:
+                word_tmp=[]
+                for character in word:
+                    # word_tmp.append(self.char2id[character])
+                    word_tmp.append(self.char2id.get(character,self.char_unk))
+
+                    # self.char2id.get(c, self.char_unk)
+                sentence_tmp.append([self.start_of_word]+word_tmp+[self.end_of_word])
+            output.append(sentence_tmp)
+
+                # [self.start_of_word] + [self.char2id[character] for character in word] + [self.end_of_word]
+        return output
 
 
         ### END YOUR CODE

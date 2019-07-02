@@ -135,7 +135,7 @@ class NMT(nn.Module):
             max_word_len = target_padded_chars.shape[-1]
 
             target_words = target_padded[1:].contiguous().view(-1)
-            target_chars = target_padded_chars[1:].view(-1, max_word_len)
+            target_chars = target_padded_chars[1:].contiguous().view(-1, max_word_len)
             target_outputs = combined_outputs.view(-1, 256)
 
             target_chars_oov = target_chars #torch.index_select(target_chars, dim=0, index=oovIndices)
@@ -171,7 +171,6 @@ class NMT(nn.Module):
         init_decoder_hidden = self.h_projection(last_hidden_cat)
         init_decoder_cell = self.c_projection(last_cell_cat)
         dec_init_state = (init_decoder_hidden, init_decoder_cell)
-
 
         ### END YOUR CODE FROM ASSIGNMENT 4
 
