@@ -212,8 +212,8 @@ def main():
         char_embedding_size=EMBED_SIZE,
         target_vocab=char_vocab)
 
-    question_1f_sanity_check()
-    # question_2c_sanity_check(decoder)
+    # question_1f_sanity_check()
+    question_2d_sanity_check(decoder)
 
     # if args['1e']:
     #     question_1e_sanity_check()

@@ -107,7 +107,7 @@ class CharDecoder(nn.Module):
         ###        Their indices are self.target_vocab.start_of_word and self.target_vocab.end_of_word, respectively.
         _,batch,_=initialStates[0].shape
         start=self.target_vocab.char2id['{']
-        whole_batches = torch.tensor([start]).repeat(1, batch)  # (len_sentence,batch_size)
+        whole_batches = torch.tensor([start],device=device).repeat(1, batch)  # (len_sentence,batch_size)
         current_char=whole_batches
         m=nn.Softmax(dim=2)
         while whole_batches.shape[0]<max_length:
