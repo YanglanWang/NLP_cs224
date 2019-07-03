@@ -106,12 +106,13 @@ class CharDecoder(nn.Module):
         ###      - We use curly brackets as start-of-word and end-of-word characters. That is, use the character '{' for <START> and '}' for <END>.
         ###        Their indices are self.target_vocab.start_of_word and self.target_vocab.end_of_word, respectively.
         _,batch,_=initialStates[0].shape
+        dec_hidden=initialStates
         start=self.target_vocab.char2id['{']
         whole_batches = torch.tensor([start],device=device).repeat(1, batch)  # (len_sentence,batch_size)
         current_char=whole_batches
         m=nn.Softmax(dim=2)
-        while whole_batches.shape[0]<max_length:
-            scores,dec_hidden=self.forward(current_char,initialStates)     #score (length,batch,len_vocab)
+        while whole_batches.shape[0]<=max_length:
+            scores,dec_hidden=self.forward(current_char,dec_hidden)     #score (length,batch,len_vocab)
             scores_after=m(scores)
             current_char_value,current_char=torch.max(scores_after,dim=2)
             whole_batches=torch.cat((whole_batches,current_char),0)
@@ -119,19 +120,23 @@ class CharDecoder(nn.Module):
         whole_batches_transpose=whole_batches.t()
         output=[]
         for i in range(len(whole_batches_transpose)):
+            sentence=''
             for j in range(len(whole_batches_transpose[i])):
                 if whole_batches_transpose[i][j]==end:
-                    output.append(whole_batches_transpose[i][:j])
+                    output.append(sentence)
                     break
-                if j==len(whole_batches_transpose[i])-1:
-                    output.append(whole_batches_transpose[i])
+                else:
+                    if j!=0:
+                    # self.target_vocab.id2char.get(whole_batches_transpose[i][j], self.char_unk)
+                        sentence=sentence+self.target_vocab.id2char[whole_batches_transpose[i][j].item()]
+                    # sentence.append(self.target_vocab.id2char[whole_batches_transpose[i][j].item()])
 
+                if j==len(whole_batches_transpose[i])-1:
+                    output.append(sentence)
 
         return output
 
 
-
-
-        
         ### END YOUR CODE
+
 
