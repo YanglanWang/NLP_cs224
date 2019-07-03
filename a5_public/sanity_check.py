@@ -28,7 +28,7 @@ from utils import pad_sents_char, read_corpus, batch_iter
 from vocab import Vocab, VocabEntry
 
 from char_decoder import CharDecoder
-from nmt_model import NMT
+from nmt_model_my import NMT
 
 
 import torch
