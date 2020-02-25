@@ -1,2 +1,2 @@
 # NLP_cs224
-assignments in cs224(2019 winter)
+These are all assignments done bymyself about cs224(2019 winter).
